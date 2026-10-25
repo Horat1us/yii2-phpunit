@@ -11,8 +11,7 @@ After each test it restores the error and exception handlers registered by the a
 - [MigrateFixture](./src/MigrateFixture.php) - Yii2 fixture that will apply migration.
 Use case: your package contains migrations and you need to apply it before tests.
 
-**Note: this package supposed to support old packages, that depends on it**:
-the classes are also available in the `yii\phpunit` namespace (e.g. `yii\phpunit\TestCase`).
+**Note: this package supposed to support old packages, that depends on it**
 
 Compatibility: tested on PHP 8.4, PHP 8.5 (PHPUnit 13).
 Projects on PHPUnit 9 stay on `0.0.x`.

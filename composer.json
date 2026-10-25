@@ -13,8 +13,7 @@
     "files": [
       "src/environment.php",
       "src/constants.php",
-      "src/autoload.php",
-      "src/aliases.php"
+      "src/autoload.php"
     ]
   },
   "autoload-dev": {
