@@ -312,6 +312,11 @@ class TestCase extends \PHPUnit\Framework\TestCase
         if ($mailer instanceof TestMailer) {
             $mailer->reset();
         }
+
+        // restore the error and exception handlers that the application registered in setUp()
+        if ($this->app->has('errorHandler', true)) {
+            $this->app->getErrorHandler()->unregister();
+        }
     }
 
     /**

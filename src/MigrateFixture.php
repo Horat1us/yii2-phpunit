@@ -90,7 +90,6 @@ class MigrateFixture extends Fixture
     protected function invokeControllerMethod($method, ...$args)
     {
         $methodInstance = new \ReflectionMethod(MigrateController::class, $method);
-        $methodInstance->setAccessible(true);
         return $methodInstance->invoke($this->controller, ...$args);
     }
 }
