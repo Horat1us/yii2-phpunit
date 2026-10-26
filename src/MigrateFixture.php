@@ -34,12 +34,20 @@ class MigrateFixture extends Fixture
     {
         parent::__construct($config);
 
-        $this->controller = new MigrateController('migrate', new Module('test-fixture'), [
+        $this->controller = new class ('migrate', new Module('test-fixture'), [
             'db' => Yii::$app->db,
             'interactive' => false,
             'migrationNamespaces' => $this->migrationNamespaces,
             'migrationPath' => $this->migrationPath,
-        ]);
+        ]) extends MigrateController {
+            /**
+             * Keeps the test output clean (e.g. "Creating migration history table").
+             */
+            public function stdout($string)
+            {
+                return false;
+            }
+        };
     }
 
     public function load()
@@ -90,7 +98,6 @@ class MigrateFixture extends Fixture
     protected function invokeControllerMethod($method, ...$args)
     {
         $methodInstance = new \ReflectionMethod(MigrateController::class, $method);
-        $methodInstance->setAccessible(true);
         return $methodInstance->invoke($this->controller, ...$args);
     }
 }
